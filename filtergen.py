@@ -24,13 +24,17 @@ def main():
  xml = etree.parse(f)
  xmlroot=xml.getroot()
  flt=xmlroot.find('CustomSqlFilter')
- SqlFilterName=flt.attrib['SqlFilterName'].encode('CP1251')
+ SqlFilterName=flt.attrib['SqlFilterName']
+#.encode('CP1251')
  print "1"
- SqlJoinPart=flt.attrib['SqlJoinPart'].encode('CP1251')
+ SqlJoinPart=flt.attrib['SqlJoinPart']
+#.encode('CP1251')
  #print 
- SqlWherePart=flt.attrib['SqlWherePart'].encode('CP1251')
+ SqlWherePart=flt.attrib['SqlWherePart']
+#.encode('CP1251')
  print flt.attrib['SqlWherePart']
- SqlFilterDescription=flt.attrib['SqlFilterDescription'].encode('CP1251')
+ SqlFilterDescription=flt.attrib['SqlFilterDescription']
+#.encode('CP1251')
  ObjectName=flt.attrib['ObjectName']
  genidsql='select gen_id (seq_custom_sql_filter,1) from rdb$database'
  sql='INSERT INTO CUSTOM_SQL_FILTER (ID, OBJECT_NAME, SQL_FILTER_NAME, SQL_JOIN_PART, SQL_WHERE_PART, SQL_FILTER_DESCRIPTION, IS_LIST_VISIBLE, IS_STAT_VISIBLE, IS_ANALYTICS_VISIBLE, PARENT_ID) VALUES (?,?,?,?,?,?,?,?,?,?)'
@@ -39,9 +43,9 @@ def main():
 #17121000000120, 'doc_ip_doc', '111111', NULL, NULL, NULL, 1, 1, 1, 17121000000085);' 
  
  username='SYSDBA'
- password=''
+ password='masterkey'
  concodepage='WIN1251'
- hostname='10.9.34.34'
+ hostname='localhost'
  database='ncore-fssp'
  try:
   con = fdb.connect (host=hostname, database=database, user=username, password=password,charset=concodepage)
